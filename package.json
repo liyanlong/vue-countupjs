@@ -1,0 +1,29 @@
+{
+  "name": "vue-countup",
+  "description": "countup.js in vue",
+  "version": "1.0.0",
+  "author": "liyl <295697141@qq.com>",
+  "private": true,
+  "scripts": {
+    "dev": "node build/devserver.js",
+    "build": "webpack --config build/example.js"
+  },
+  "dependencies": {
+    "countup.js": "^1.8.5",
+    "vue": "^2.3.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-env": "^1.5.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.11.2",
+    "prismjs": "^1.6.0",
+    "style-loader": "^0.18.2",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
