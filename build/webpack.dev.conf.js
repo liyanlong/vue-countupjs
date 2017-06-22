@@ -1,10 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
+var merge = require('webpack-merge')
+var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+module.exports = merge(baseWebpackConfig, {
   entry: {
-    example: ['./example/index.js'],
+    app: ['./example/index.js'],
     vendor: ['vue', 'countup.js']
   },
   output: {
@@ -32,7 +34,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]?[hash]'
+          name: 'img/[name].[ext]?[hash]'
         }
       },
       {
@@ -70,4 +72,5 @@ module.exports = {
       inject: true
     })
   ]
-}
+})
+
