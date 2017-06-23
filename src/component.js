@@ -2,7 +2,6 @@ import CountUp from 'countup.js'
 import extend from './utils/extend'
 
 function _createCountUp (vm) {
-  console.log(vm.options)
   let countup = new CountUp(vm.$el, 
       vm.startValue, 
       vm.endValue, 

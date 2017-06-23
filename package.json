@@ -3,6 +3,10 @@
   "description": "Vue + CountUp.js",
   "version": "0.1.0",
   "author": "liyl <295697141@qq.com>",
+  "files": [
+    "dist/"
+  ],
+  "main": "./dist/vue-countup.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node build/devserver.js",
     "build": "npm run build:docs && npm run build:libary",
