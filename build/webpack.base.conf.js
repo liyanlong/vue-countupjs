@@ -5,7 +5,7 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'vue-countup$': path.resolve(__dirname, '../src/index')
+      'vue-countupjs$': path.resolve(__dirname, '../src/index')
     }
   },
   module: {

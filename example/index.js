@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueCountUp from 'vue-countup'
+import VueCountUp from 'vue-countupjs'
 
 Vue.use(VueCountUp)
 new Vue({

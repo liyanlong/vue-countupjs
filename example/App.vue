@@ -4,11 +4,11 @@
         <div id="github"><a class="block" href="https://github.com/liyanlong"></a></div>
     </header>
     <section>
-        <h1>vue-countup &nbsp;<small id="version" class="lt-gray">{{version}}</small></h1>
-        <p>vue-countup 是基于 <a href="http://inorganik.github.io/countUp.js/" title="点击了解CountUp.js">CountUp.js</a> 的一个轻量级 <a href="http://cn.vuejs.org/">Vue</a> 组件</p>
-        <p>npm install vue-countup</p>
+        <h1>vue-countupjs &nbsp;<small id="version" class="lt-gray">{{version}}</small></h1>
+        <p>vue-countupjs 是基于 <a href="http://inorganik.github.io/countUp.js/" title="点击了解CountUp.js">CountUp.js</a> 的一个轻量级 <a href="http://cn.vuejs.org/">Vue</a> 组件</p>
+        <p>npm install vue-countupjs</p>
         <h3 class="marginTop marginBottom">
-          <a class="lime weight700" href="https://github.com/liyanlong/vue-countup">Download on Github</a>
+          <a class="lime weight700" href="https://github.com/liyanlong/vue-countupjs">Download on Github</a>
         </h3>
     </section>
     <section>
@@ -107,14 +107,14 @@
         </div>
       </div>
   </section>
-  <a class="forkMe" href="https://github.com/liyanlong/vue-countup">
+  <a class="forkMe" href="https://github.com/liyanlong/vue-countupjs">
     <img src="./assets/img/forkme_custom_indigo.png" alt="Fork me on GitHub">
   </a>
   </div>
 </template>
 
 <script>
-import VueCountUp from 'vue-countup'
+import VueCountUp from 'vue-countupjs'
 import Prism from 'prismjs'
 
 const animateFnMap = {
