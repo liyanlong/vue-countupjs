@@ -12,3 +12,17 @@ module.exports = merge(baseConfig, {
     libraryTarget: 'umd'
   }
 })
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = merge(module.exports, {
+    output: {
+      filename: 'vue-countup.min.js'
+    },
+    devtool: '#source-map',
+    plugins: [
+      new webpack.LoaderOptionsPlugin({
+        minimize: true
+      })
+    ]
+  })
+}

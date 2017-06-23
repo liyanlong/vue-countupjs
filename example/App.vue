@@ -5,7 +5,8 @@
     </header>
     <section>
         <h1>vue-countup &nbsp;<small id="version" class="lt-gray">{{version}}</small></h1>
-        <p>vue-countup 是基于 <a href="http://liyanlong.github.io/countUp.js/" title="点击了解CountUp.js">CountUp.js</a> 的一个轻量级 <a href="http://cn.vuejs.org/">Vue</a> 组件</p>
+        <p>vue-countup 是基于 <a href="http://inorganik.github.io/countUp.js/" title="点击了解CountUp.js">CountUp.js</a> 的一个轻量级 <a href="http://cn.vuejs.org/">Vue</a> 组件</p>
+        <p>npm install vue-countup</p>
         <h3 class="marginTop marginBottom">
           <a class="lime weight700" href="https://github.com/liyanlong/vue-countup">Download on Github</a>
         </h3>

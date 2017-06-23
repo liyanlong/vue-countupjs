@@ -4,15 +4,29 @@ var rm = require('rimraf')
 var ora = require('ora')
 var chalk = require('chalk')
 var merge = require('webpack-merge')
-var devConfig = require('./webpack.dev.conf')
+var baseWebpackConfig = require('./webpack.base.conf')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var webpackConfig = merge(devConfig, {
+var webpackConfig = merge(baseWebpackConfig, {
+  entry: {
+    app: ['./example/index.js'],
+    vendor: ['vue', 'countup.js'],
+    'vue-countup': ['./src/index.js']
+  },
+  output: {
+    path: path.resolve(__dirname, '../docs/'),
+    publicPath: './',
+    filename: '[name].js'
+  },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'example/index.html',
+      inject: true
     })
   ]
 })

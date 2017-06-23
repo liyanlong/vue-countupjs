@@ -2,7 +2,7 @@ var webpack = require('webpack')
 var DevServer = require('webpack-dev-server')
 var config = require('./webpack.dev.conf')
 
-config.entry.example.unshift(
+config.entry.app.unshift(
   'webpack-dev-server/client?http://localhost:8080/',
   'webpack/hot/dev-server'
 )

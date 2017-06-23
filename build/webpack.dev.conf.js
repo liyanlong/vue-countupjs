@@ -7,55 +7,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
   entry: {
     app: ['./example/index.js'],
-    vendor: ['vue', 'countup.js']
+    vendor: ['vue', 'countup.js'],
+    'vue-countup': ['./src/index.js']
   },
   output: {
-    path: path.resolve(__dirname, '../docs/'),
     publicPath: '/',
     filename: '[name].build.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader'},
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          }
-        ]
-      }
-    ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      'vue-countup$': path.resolve(__dirname, '../src/index')
-    }
   },
   performance: {
     hints: false
