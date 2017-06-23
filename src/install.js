@@ -8,7 +8,7 @@ export default function install (Vue, options = {}) {
   if (install.installed) {
     return
   }
-  install.installed = true
   const globalOptions = Vue.util.extend({}, defaultOptions, options)
   Vue.component(globalOptions.name, VueCountUp)
+  install.installed = true
 }

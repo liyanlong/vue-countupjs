@@ -28,6 +28,38 @@ module.exports = merge(baseWebpackConfig, {
       template: 'example/index.html',
       inject: true
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+          }
+          // other vue-loader options go here
+        }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      }
+    ]
+  }
 })
 

@@ -14,39 +14,6 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
-        }
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]?[hash]'
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          { loader: 'style-loader'},
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          }
-        ]
       }
     ]
   },

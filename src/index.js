@@ -1,8 +1,10 @@
 import Component from './component.js'
 import install from './install.js'
 
-export default  {
-  version: 'v0.1.0',
+const VueCountUp = {
+  version: '0.1.2',
   install,
   component: Component
 }
+
+module.exports = VueCountUp

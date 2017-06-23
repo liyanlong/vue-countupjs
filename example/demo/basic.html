@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Basic</title>
+  </head>
+  <body>
+    <div id="app">
+      <v-countup :start-value="1" :end-value="100"></v-countup>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+    <script src="../../dist/vue-countup.js"></script>
+    <script>
+      Vue.use(VueCountUp)
+      var template = ''
+      var app = new Vue({
+        data: {},
+        el: "#app"
+      })
+    </script>
+  </body>
+</html>

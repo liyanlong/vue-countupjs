@@ -4,15 +4,10 @@ var rm = require('rimraf')
 var ora = require('ora')
 var chalk = require('chalk')
 var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
+var devWebpackConfig = require('./webpack.dev.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
-var webpackConfig = merge(baseWebpackConfig, {
-  entry: {
-    app: ['./example/index.js'],
-    vendor: ['vue', 'countup.js'],
-    'vue-countup': ['./src/index.js']
-  },
+var webpackConfig = merge(devWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../docs/'),
     publicPath: './',

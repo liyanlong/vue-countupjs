@@ -1,5 +1,6 @@
 import CountUp from 'countup.js'
 import extend from './utils/extend'
+import {hasClass, removeClass, addClass} from './utils/dom'
 
 function _createCountUp (vm) {
   let countup = new CountUp(vm.$el, 
@@ -56,10 +57,19 @@ export default {
     immediate: {
       type: Boolean,
       default: true
+    },
+    delay: {
+      type: twoTypes,
+      default: 0
+    },
+    className: {
+      type: String,
+      required: false
     }
   },
   data () {
     return {
+      oldVal: null
     }
   },
   mounted () {
@@ -82,15 +92,41 @@ export default {
       }
     },
     start () {
-      this._countup.start((lastTime) => {
-        this.$emit('animation-end', this, this._countup)
-      })
+      let vm = this
+      let delay = Math.max(+this.delay, 0)
+      function _start () {
+        if (vm.className && !hasClass(vm.$el, vm.className)) {
+          addClass(vm.$el, vm.className)
+        }
+        vm._countup.start((lastTime) => {
+          if (vm.className && hasClass(vm.$el, vm.className)) {
+            removeClass(vm.$el, vm.className)
+          }
+          vm.$emit('animation-end', vm, vm._countup)
+        })
+      }
+
+      if (delay > 0) {
+        if (this.delayTimeout) { 
+          clearTimeout(this.delayTimeout)
+        }
+        this.delayTimeout = setTimeout(_start, delay * 1000)
+      } else {
+         _start()
+      }
     },
     update (val) {
       val = Number(val)
       if (isNaN(val)) {
         console.error('[vue-countup] update() Error! the val is not validate number')
         return
+      }
+      if (val === this.oldVal) {
+        return
+      }
+      this.oldVal = val
+      if (this.className && !hasClass(this.$el, this.className)) {
+        addClass(this.$el, this.className)
       }
       this._countup.update(val)
     },
@@ -136,7 +172,15 @@ export default {
     duration (val) {
       val = Number(val)
       if (isNaN(val)) {        
-        console.error('[vue-countup] Error ! duration is not number')
+        console.error('[vue-countup] Error! duration is not number')
+        return
+      }
+      this.recreateCountUp()
+    },
+    delay (val) {
+      val = Number(val)
+      if (isNaN(val)) {        
+        console.error('[vue-countup] Error! duration is not number')
         return
       }
       this.recreateCountUp()

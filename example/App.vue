@@ -19,7 +19,9 @@
           :decimals="decimals"
           :duration="duration"
           :options="options"
-          tag="h1" 
+          :delay="delay"
+          class-name="countup-animation"
+          tag="h1"
           class="jumbo" 
           ref="countup"
           @animation-end="animationEnd">
@@ -44,6 +46,10 @@
             <div class="inlineLeft marginRight">
                 <input type="number" v-model.number="duration" id="duration" step=".1" style="width:50px">
                 <label class="inlineLabel">Duration</label>
+            </div>
+             <div class="inlineLeft marginRight">
+                <input type="number" v-model.number="delay" id="duration" step=".1" style="width:50px">
+                <label class="inlineLabel">Delay</label>
             </div>
         </form>
     </section>
@@ -143,6 +149,7 @@ export default {
       decimals: 2,
       duration: 2.5,
       updateValue: 5657,
+      delay: 0,
       checked: false,
       selectedAnimateFn: "easeOutExpo",
       options: {
