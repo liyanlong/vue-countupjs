@@ -20,11 +20,10 @@
           :duration="duration"
           :options="options"
           :delay="delay"
-          class-name="countup-animation"
           tag="h1"
           class="jumbo" 
           ref="countup"
-          @animation-end="animationEnd">
+          @callback="callback">
         </v-countup>
     </section>
     <section>
@@ -147,7 +146,7 @@ export default {
       startValue: 50,
       endValue: 100,
       decimals: 2,
-      duration: 2.5,
+      duration: 1,
       updateValue: 5657,
       delay: 0,
       checked: false,
@@ -188,7 +187,7 @@ export default {
       const countup = this.$refs.countup
       countup.reset()
     },
-    animationEnd (vm, countup) {
+    callback (vm, countup) {
       if (this.checked) {
         alert('COMPLETE!')
       }
@@ -204,8 +203,36 @@ export default {
   }
 }
 </script>
-
 <style>
   @import './assets/style.css';
   @import './assets/prism.css';
+    
+    .animated {
+      animation-duration: 0.5s;
+      animation-fill-mode: both;
+    }
+    .bounce {
+      animation-name: bounce;
+      transform-origin: center bottom;
+    }
+    @keyframes bounce {
+      from, 20%, 53%, 80%, to {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(0,0,0);
+      }
+
+      40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -30px, 0);
+      }
+
+      70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(0, -15px, 0);
+      }
+
+      90% {
+        transform: translate3d(0,-4px,0);
+      }
+    }
 </style>

@@ -1,6 +1,7 @@
 import CountUp from 'countup.js'
 import extend from './utils/extend'
 import {hasClass, removeClass, addClass} from './utils/dom'
+import {animationEnd} from './utils/event'
 
 function _createCountUp (vm) {
   let countup = new CountUp(vm.$el, 
@@ -22,7 +23,7 @@ const defaultsOptions = {
 }
 
 const twoTypes = [Number, String]
-
+const stringOrArray = [String, Array]
 export default {
   props: {
     tag: {
@@ -63,13 +64,24 @@ export default {
       default: 0
     },
     className: {
-      type: String,
+      type: stringOrArray,
       required: false
     }
   },
   data () {
     return {
       oldVal: null
+    }
+  },
+  computed: {
+    computedClass () {
+      let className = this.className
+      if (typeof className === 'string' && className !== '') {
+        return className.includes(' ') ? className.split(' ') : className
+      } else if (Array.isArray(className)) {
+        return className
+      }
+      return null
     }
   },
   mounted () {
@@ -94,15 +106,20 @@ export default {
     start () {
       let vm = this
       let delay = Math.max(+this.delay, 0)
+      function cancel () {
+        vm.$el.removeEventListener(animationEnd, cancel)
+      }
       function _start () {
-        if (vm.className && !hasClass(vm.$el, vm.className)) {
-          addClass(vm.$el, vm.className)
+        if (vm.computedClass && !hasClass(vm.$el, vm.computedClass)) {
+          vm.$el.addEventListener(animationEnd, cancel, false)
+          addClass(vm.$el, vm.computedClass)
         }
         vm._countup.start((lastTime) => {
-          if (vm.className && hasClass(vm.$el, vm.className)) {
-            removeClass(vm.$el, vm.className)
+          if (vm.computedClass && hasClass(vm.$el, vm.computedClass)) {
+            removeClass(vm.$el, vm.computedClass)
+            vm.$el.removeEventListener(animationEnd, cancel)
           }
-          vm.$emit('animation-end', vm, vm._countup)
+          vm.$emit('callback', vm, vm._countup)
         })
       }
 
@@ -125,8 +142,8 @@ export default {
         return
       }
       this.oldVal = val
-      if (this.className && !hasClass(this.$el, this.className)) {
-        addClass(this.$el, this.className)
+      if (this.computedClass && !hasClass(this.$el, this.computedClass)) {
+        addClass(this.$el, this.computedClass)
       }
       this._countup.update(val)
     },
