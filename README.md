@@ -50,7 +50,6 @@ new Vue({
     <script src='https://unpkg.com/vue-countupjs'></script>
     <script>
       Vue.use(VueCountUp)
-      var template = ''
       var app = new Vue({
         data: {
           start: 1,
