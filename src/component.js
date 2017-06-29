@@ -135,7 +135,7 @@ export default {
     update (val) {
       val = Number(val)
       if (isNaN(val)) {
-        console.error('[vue-countup] update() Error! the val is not validate number')
+        console.error('[vue-countupjs] update() Error! the val is not validate number')
         return
       }
       if (val === this.oldVal) {
@@ -161,7 +161,7 @@ export default {
     startValue (val) {
       val = Number(val)
       if (isNaN(val)) {
-        console.warn('[vue-countup] Warning ! the prop startValue is not number')
+        console.warn('[vue-countupjs] Warning ! the prop startValue is not number')
         return
       }
       this.recreateCountUp()
@@ -169,7 +169,7 @@ export default {
     endValue (val) {
       val = Number(val)
       if (isNaN(val)) {
-        console.error('[vue-countup] Error! endValue is not number')
+        console.error('[vue-countupjs] Error! endValue is not number')
         return      
       }
       this.recreateCountUp()      
@@ -177,11 +177,11 @@ export default {
     decimals (val) {
       val = Number(val)
       if (isNaN(val)) {
-        console.error('[vue-countup] Error! decimals is not number')
+        console.error('[vue-countupjs] Error! decimals is not number')
         return
       }
       if (val > 20) {
-        console.error('[vue-countup] Error! decimals over limit, the max decimals is 20')
+        console.error('[vue-countupjs] Error! decimals over limit, the max decimals is 20')
         return
       }
       this.recreateCountUp()
@@ -189,7 +189,7 @@ export default {
     duration (val) {
       val = Number(val)
       if (isNaN(val)) {        
-        console.error('[vue-countup] Error! duration is not number')
+        console.error('[vue-countupjs] Error! duration is not number')
         return
       }
       this.recreateCountUp()
@@ -197,7 +197,7 @@ export default {
     delay (val) {
       val = Number(val)
       if (isNaN(val)) {        
-        console.error('[vue-countup] Error! duration is not number')
+        console.error('[vue-countupjs] Error! duration is not number')
         return
       }
       this.recreateCountUp()
