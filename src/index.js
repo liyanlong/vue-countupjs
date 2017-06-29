@@ -2,7 +2,7 @@ import Component from './component.js'
 import install from './install.js'
 
 const VueCountUp = {
-  version: '0.1.2',
+  version: process.env.version,
   install,
   component: Component
 }

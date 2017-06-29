@@ -7,8 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
   entry: {
     app: ['./example/index.js'],
-    vendor: ['vue', 'countup.js'],
-    'vue-countup': ['./src/index.js']
+    vendor: ['vue', 'countup.js']
   },
   output: {
     publicPath: '/',
