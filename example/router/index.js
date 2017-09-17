@@ -17,6 +17,10 @@ const routes = [
   {
     path: '/api',
     component: () => import('../pages/API.md')
+  },
+  {
+    path: '/changelog',
+    component: () => import('../pages/CHANGELOG.md')
   }
 ]
 

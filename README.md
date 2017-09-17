@@ -2,7 +2,6 @@
 >  基于 CountUp.js 的 Vue 组件, 简易数字动画跳动
 >  默认使用 `window.requestAnimFrame` 动画桢进行更新跳动数字
 
-
 ## Installation
 
 **使用npm安装**
@@ -60,7 +59,9 @@ new Vue({
     </script>
   </body>
 ```
-[jsFiddle 地址](https://jsfiddle.net/liyl/mnz95c42/)
+
+## 在线 DEMO
+[jsFiddle 地址](https://jsfiddle.net/liyl/mnz95c42/2/)
 
 ## Documentantion
 
