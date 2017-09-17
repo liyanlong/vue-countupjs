@@ -40,6 +40,5 @@
 
 <br>
 
-## 线上DEMO
-
-- [jsFiddle 地址](https://jsfiddle.net/liyl/mnz95c42/)
+## 在线 DEMO
+- [jsFiddle 地址](https://jsfiddle.net/liyl/mnz95c42/2/)
