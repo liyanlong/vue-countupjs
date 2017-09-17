@@ -1,9 +1,14 @@
 import Vue from 'vue'
-import App from './App.vue'
 import VueCountUp from 'vue-countupjs'
 
+import router from './router/index.js'
+import App from './App.vue'
+
+
 Vue.use(VueCountUp)
+
 new Vue({
-  el: '#wrap',
-  render: h => h(App)
-})
+  render: h => h(App),
+  // vue-router instance
+  router
+}).$mount('#wrap')

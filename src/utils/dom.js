@@ -66,3 +66,5 @@ export function removeClass (el, cls) {
     el.className = trim(curClass)
   }
 }
+
+export const inBrowser = typeof window !== 'undefined'

@@ -9,14 +9,14 @@ body {
 	background-color:#FFF;
 	position:relative;
 }
-#wrap {
+.wrap {
+	position: relative;
 	width:981px;
-	margin:0 auto -25px auto;
+	margin:0 auto;
 	text-align: left;
-	overflow:hidden;
-    -webkit-box-sizing:border-box;
-    -moz-box-sizing:border-box;
-	box-sizing:border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 #footer {
 	text-align: left;
@@ -31,16 +31,6 @@ body {
 
 /* --------------- header ---------------- */
 
-header {
-	width:100%;
-	height:100px;
-	margin-top:40px;
-	text-align:left; 
-	display:block;
-	background-color:#fff;
-	position:relative;
-	overflow:hidden;
-}
 .leaderLine {
 	width:100%;
 	height:20px;
@@ -249,7 +239,6 @@ section {
 	clear:left;
 	position:relative;
 	width:100%;
-	border-bottom:1px #C4C4C4 solid;
 }
 section.gray-bkgd {
 	background-color:#F0F0F0;
@@ -350,12 +339,6 @@ section:after,
 
 .overflowHidden { overflow:hidden }
 
-.animate {
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
-}
 
 /* ---------------- forms ----------------- */
 
@@ -515,9 +498,26 @@ input:-moz-placeholder { color:#ccc; }
     width: 48px;
     height: 48px;
     position: absolute;
-    top: 10px;
-    left: 0;
+    top: 0px;
+    left: 0px;
     z-index: 10;
     background: url(./img/github.png) no-repeat;
     background-size: 100% auto;
+}
+
+/**/
+.router-link-active a{
+	color: #333;
+}
+
+.hljs {
+  line-height: 1.8;
+  font-family: Menlo,Monaco,Consolas,Courier,monospace;
+  font-size: 12px;
+  padding: 18px 24px;
+  background-color: #f9fafc;
+  border: 1px solid #eaeefb;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  -webkit-font-smoothing: auto;
 }
