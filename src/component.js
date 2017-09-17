@@ -63,19 +63,24 @@ export default {
       type: twoTypes,
       default: 0
     },
-    className: {
+    animateClass: {
       type: stringOrArray,
       required: false
+    },
+    animatedClass: {
+      type: String,
+      default: 'animated'
     }
   },
   data () {
     return {
-      oldVal: null
+      oldVal: null,
+      delayTimeout: null
     }
   },
   computed: {
     computedClass () {
-      let className = this.className
+      let className = this.animateClass
       if (typeof className === 'string' && className !== '') {
         return className.includes(' ') ? className.split(' ') : className
       } else if (Array.isArray(className)) {
@@ -88,14 +93,33 @@ export default {
     this.createCountUp()
     if (this.immediate) {
       this.start()
+    } else {
+      this.jumpToEndValue()
     }
   },
   methods: {
     createCountUp () {
-      if (this._countup && !this._countup.paused) {
+      if (this._countup) {
+        this._countup.reset()
+        this._countup = null
+      }
+      if (this.delayTimeout) { 
+        clearTimeout(this.delayTimeout)
+      }
+      this._countup = _createCountUp(this)
+    },
+    jumpToEndValue () {
+      if (this._countup) {
         this._countup.reset()
       }
-      return this._countup = _createCountUp(this)
+      if (this.delayTimeout) { 
+        clearTimeout(this.delayTimeout)
+      }
+      if (this.$el.innerText) {
+        this.$el.innerText = this.endValue
+      } else if (this.$el.textContent){
+        this.$el.innerText = this.endValue        
+      }
     },
     recreateCountUp () {
       this.createCountUp()
@@ -111,6 +135,10 @@ export default {
       }
       function _start () {
         if (vm.computedClass && !hasClass(vm.$el, vm.computedClass)) {
+          if (!hasClass(vm.$el, vm.animatedClass)) {
+            addClass(vm.$el, vm.animatedClass)
+            vm.$el.offsetWidth  
+          }
           vm.$el.addEventListener(animationEnd, cancel, false)
           addClass(vm.$el, vm.computedClass)
         }
@@ -155,7 +183,7 @@ export default {
     }
   },
   render (h) {
-    return h(this.tag, {}, '')
+    return h(this.tag, {}, '')      
   },
   watch: {
     startValue (val) {
@@ -197,7 +225,7 @@ export default {
     delay (val) {
       val = Number(val)
       if (isNaN(val)) {        
-        console.error('[vue-countupjs] Error! duration is not number')
+        console.error('[vue-countupjs] Error! delay is not number')
         return
       }
       this.recreateCountUp()

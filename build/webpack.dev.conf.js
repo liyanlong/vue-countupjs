@@ -57,6 +57,11 @@ module.exports = merge(baseWebpackConfig, {
             }
           }
         ]
+      }, 
+      {
+        test: /\.md$/,
+        // markdown to vue component
+        loader: 'vue-markdown-loader'
       }
     ]
   }
